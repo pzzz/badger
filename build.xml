@@ -134,5 +134,6 @@
     <target name="badge" description="Create project badges">
         <taskdef resource="taskdef.xml"  classpathref="project.class.path"/>
         <badger inFile="${reports-dir}/findbugs.xml" outDir="${reports-dir}" />
+        <badger inFile="${reports-dir}/checkstyle-result.xml" outDir="${reports-dir}" />
     </target>
 </project>
