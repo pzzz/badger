@@ -7,6 +7,7 @@ package com.github.bordertech.buildtools.plugins;
  * @since 1.0.0
  */
 public class BadgerException extends IllegalStateException {
+	private static final long serialVersionUID = -997921870510322580L;
 
 	/**
 	 * Create an instance of this exception with the message to log.
