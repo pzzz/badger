@@ -3,6 +3,7 @@ package com.github.bordertech.buildtools;
 import com.github.bordertech.buildtools.plugins.BadgerException;
 import java.io.File;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.transform.Transformer;
@@ -38,7 +39,7 @@ public class Badger {
 	 */
 	public void setInputXml(final File[] paths) {
 		// No point validating here, the input files don't need to exist until execution.
-		this.inputFiles = paths;
+		this.inputFiles = Arrays.copyOf(paths, paths.length);;
 	}
 
 	/**

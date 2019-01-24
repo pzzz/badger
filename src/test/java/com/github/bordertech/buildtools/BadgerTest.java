@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.Scanner;
 import org.junit.Assert;
 import org.junit.Rule;
@@ -182,7 +183,7 @@ public class BadgerTest {
 	 */
 	public static boolean contains(final File file, final String search) {
 		try {
-			Scanner scanner = new Scanner(file);
+			Scanner scanner = new Scanner(file, Charset.defaultCharset().name());
 			while (scanner.hasNextLine()) {
 				String line = scanner.nextLine();
 				if (line.contains(search)) {
