@@ -15,3 +15,5 @@ buildNumber.properties
 /bin/
 /lib/
 /reports/
+/javadoc/
+/dist/

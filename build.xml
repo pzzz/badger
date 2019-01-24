@@ -27,6 +27,15 @@
         </copy>
     </target>
 
+    <target name="jar" depends="compile, javadoc" description="Create the jar files">
+        <jar jarfile="${dist-dir}/badger.jar">
+            <fileset dir="${bin}" />
+            <fileset dir="${resources}" />
+        </jar>
+        <jar jarfile="${dist-dir}/badger-sources.jar" basedir="${source}"/>
+        <jar jarfile="${dist-dir}/badger-javadoc.jar" basedir="javadoc"/>
+    </target>
+
     <target name="resolve" description="retrieve dependencies with ivy">
         <ivy:retrieve pattern="${lib-source}/[conf]/[artifact]-([classifier]-)[revision].[ext]" sync="true" />
     </target>
@@ -91,7 +100,7 @@
     </target>
 
     <target name='javadoc' description='Generate javadoc'>
-        <javadoc use='true' author='true' version='true' access='package' sourcepath='src' packagenames='*.*' destdir='javadoc' windowtitle='${project-name} // ${STAMP}' noqualifier='java.*:javax.*:com.sun.*'>
+        <javadoc use='true' author='true' version='true' access='package' sourcepath='${source}' packagenames='*.*' destdir='javadoc' windowtitle='${project-name} // ${STAMP}' noqualifier='java.*:javax.*:com.sun.*'>
             <classpath refid='project.class.path' />
         </javadoc>
     </target>
@@ -100,16 +109,16 @@
         <fail message="Jar file not found - run target jar first!">
             <condition>
                 <not>
-                    <available file="${dist-dir}/throttling-utils.jar" />
+                    <available file="${dist-dir}/badger.jar" />
                 </not>
             </condition>
         </fail>
         <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties" classpathref="project.class.path"/>
         <mkdir dir="${reports-dir}" />
         <spotbugs output="xml" outputFile="${reports-dir}/findbugs.xml" classpathref="project.class.path">
-            <class location="${dist-dir}/throttling-utils.jar" />
+            <class location="${dist-dir}/badger.jar" />
             <sourcePath path="${source}" />
-            <auxClasspath path="${lib-source}/**/*.jar" />
+            <auxClasspath refid="project.class.path" />
         </spotbugs>
     </target>
 
@@ -120,5 +129,10 @@
             <fileset dir="${source}" includes="**/*.java"/>
             <formatter type="xml" toFile="${reports-dir}/checkstyle-result.xml"/>
         </checkstyle>
+    </target>
+
+    <target name="badge" description="Create project badges">
+        <taskdef resource="taskdef.xml"  classpathref="project.class.path"/>
+        <badger inFile="${reports-dir}/findbugs.xml" outDir="${reports-dir}" />
     </target>
 </project>

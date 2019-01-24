@@ -1,0 +1,3 @@
+<antlib>
+	<taskdef name="badger" classname="com.github.bordertech.buildtools.plugins.AntBadger" />
+</antlib>

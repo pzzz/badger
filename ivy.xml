@@ -11,6 +11,8 @@
 	<dependencies>
 		<dependency org="org.apache.maven" name="maven-plugin-api" rev="3.3.3" />
 		<dependency org="org.apache.maven.plugin-tools" name="maven-plugin-annotations" rev="3.4" />
+		<!-- https://mvnrepository.com/artifact/org.apache.ant/ant -->
+		<dependency org="org.apache.ant" name="ant" rev="1.10.5"/>
 
 		<!-- Tests -->
 		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
