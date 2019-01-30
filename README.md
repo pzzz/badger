@@ -1,4 +1,6 @@
 # pzzz badger
+![Jenkins Build Status](http://cdn.pzzz.de/badger-status.svg) ![JaCoCo Coverage](http://cdn.pzzz.de/badger-jacoco.svg) ![Spotbugs Results](http://cdn.pzzz.de/badger-findbugs.svg) ![Checkstyle Results](http://cdn.pzzz.de/badger-checkstyle.svg)
+
 Provides ~~a Maven~~ an Ant plugin to generate status badges for:
 * CheckStyle
 * PMD

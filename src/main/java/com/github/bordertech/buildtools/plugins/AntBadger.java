@@ -8,9 +8,18 @@ import org.apache.tools.ant.Task;
 import com.github.bordertech.buildtools.Badger;
 
 public class AntBadger extends Task {
+	/**
+	 * XML report that should be converted to a badge.
+	 */
     private String inFile;
+    /**
+     * Directory in which the badge should be created.
+     */
 	private String outDir;
 
+	/**
+	 * Create a badge for {@link #inFile} in {@link #outDir}.
+	 */
 	@Override
 	public void execute() throws BuildException {
 		checkParameters();
@@ -25,6 +34,11 @@ public class AntBadger extends Task {
 		}
 	}
 
+	/**
+	 * Checks that all necessary parameters are set correctly.
+	 * @throws BuildException Thrown if a parameter is missing or contains a
+	 *                        forbidden value.
+	 */
 	private void checkParameters() throws BuildException {
 		if (null == inFile) {
 			throw new BuildException("Parameter inFile must not be empty");
@@ -42,15 +56,15 @@ public class AntBadger extends Task {
 		return inFile;
 	}
 
-	public void setInFile(String inDir) {
-		this.inFile = inDir;
+	public void setInFile(final String in) {
+		this.inFile = in;
 	}
 
 	public String getOutDir() {
 		return outDir;
 	}
 
-	public void setOutDir(String outDir) {
-		this.outDir = outDir;
+	public void setOutDir(final String out) {
+		this.outDir = out;
 	}
 }

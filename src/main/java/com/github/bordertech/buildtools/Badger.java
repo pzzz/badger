@@ -39,7 +39,7 @@ public class Badger {
 	 */
 	public void setInputXml(final File[] paths) {
 		// No point validating here, the input files don't need to exist until execution.
-		this.inputFiles = Arrays.copyOf(paths, paths.length);;
+		this.inputFiles = Arrays.copyOf(paths, paths.length);
 	}
 
 	/**
